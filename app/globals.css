@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 :root {
   /* Dark-first premium color scheme */
   --background: 8 8 12;
@@ -82,18 +103,182 @@
     text-wrap: balance;
   }
 
-  /* Glass morphism variants */
+  /* Glass morphism variants - Works in both light and dark mode */
   .glass {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+    @apply backdrop-blur-xl border;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
   }
 
   .glass-strong {
-    @apply backdrop-blur-2xl bg-white/10 border border-white/20;
+    @apply backdrop-blur-2xl border;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .light .glass-strong {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .glass-subtle {
+    @apply backdrop-blur-md border;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .light .glass-subtle {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .glass-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Glass with ring (for focus states) */
+  .glass-focus {
+    @apply backdrop-blur-xl border ring-1;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    ring-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .glass-focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+    ring-color: rgba(0, 0, 0, 0.1);
   }
 
   /* Gradient text */
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  /* Fluid typography */
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 0.8vw, 1rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  }
+
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 3vw, 2.25rem);
+  }
+
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 3.6vw, 3rem);
+  }
+
+  .text-fluid-5xl {
+    font-size: clamp(3rem, 5vw, 3.75rem);
+  }
+
+  .text-fluid-hero {
+    font-size: clamp(2rem, 7vw, 4.5rem);
+  }
+
+  /* Custom shadows - Turbo-style layered depth */
+  .shadow-turbo-sm {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-turbo-md {
+    box-shadow: 0 28px 70px rgba(15, 15, 45, 0.12);
+  }
+
+  .shadow-turbo-lg {
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
+  }
+
+  .shadow-turbo-xl {
+    box-shadow: 0 45px 120px -80px rgba(15, 23, 42, 0.35);
+  }
+
+  /* Dark mode - stronger shadows */
+  .dark .shadow-turbo-sm {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  }
+
+  .dark .shadow-turbo-md {
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+  }
+
+  .dark .shadow-turbo-lg {
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+  }
+
+  .dark .shadow-turbo-xl {
+    box-shadow: 0 45px 120px -60px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Ambient blur orbs */
+  .blur-orb {
+    @apply pointer-events-none absolute rounded-full blur-[128px];
+    opacity: 1;
+  }
+
+  /* Light mode - reduce opacity for subtlety */
+  .light .blur-orb {
+    opacity: 0.4;
+  }
+
+  .blur-orb-sm {
+    @apply blur-orb;
+    width: 256px;
+    height: 256px;
+  }
+
+  .blur-orb-md {
+    @apply blur-orb;
+    width: 384px;
+    height: 384px;
+  }
+
+  .blur-orb-lg {
+    @apply blur-orb;
+    width: 512px;
+    height: 512px;
+  }
+
+  /* GPU acceleration for performance */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Video optimizations */
+  .video-optimized {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Gradient border */
@@ -156,18 +341,46 @@
     border-color: rgba(var(--border), 0.5);
   }
 
-  /* Bento card */
+  /* Bento card - Enhanced with glass and turbo shadows */
   .bento-card {
     @apply relative overflow-hidden rounded-3xl p-8 transition-all duration-500;
-    @apply bg-gradient-to-br from-card to-muted border border-white/10;
-    @apply hover:scale-[1.02] hover:border-white/20;
+    @apply backdrop-blur-xl border shadow-turbo-md;
+    @apply hover:scale-[1.02] hover:shadow-turbo-lg;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .bento-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .bento-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .light .bento-card:hover {
+    border-color: rgba(0, 0, 0, 0.15);
   }
 
   /* Feature card */
   .feature-card {
-    @apply relative p-8 rounded-2xl backdrop-blur-xl;
-    @apply bg-white/5 border border-white/10;
-    @apply hover:bg-white/10 transition-all duration-300;
+    @apply relative p-8 rounded-2xl backdrop-blur-xl border transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .feature-card {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .feature-card:hover {
+    background-color: rgba(255, 255, 255, 0.9);
   }
 
   /* Premium button */
@@ -181,11 +394,39 @@
 
   /* Input field */
   .input-premium {
-    @apply w-full px-6 py-4 rounded-2xl;
-    @apply bg-white/5 border border-white/10;
+    @apply w-full px-6 py-4 rounded-2xl backdrop-blur-xl border;
     @apply text-foreground placeholder:text-muted-foreground;
     @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50;
     @apply transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .input-premium {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Carousel card - Special styling for work cards */
+  .carousel-card {
+    @apply relative overflow-hidden rounded-3xl shadow-turbo-lg backdrop-blur-xl border transition-all duration-500;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light .carousel-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-card.front {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .light .carousel-card.front {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.12);
   }
 }
 

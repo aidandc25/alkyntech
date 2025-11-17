@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import './globals.css'
 
 const inter = Inter({
@@ -43,7 +44,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
