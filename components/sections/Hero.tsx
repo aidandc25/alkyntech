@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 
 type HeroSlide = {
@@ -26,7 +26,8 @@ const heroSlides: HeroSlide[] = [
     description: 'Premium web development and intelligent automation for businesses that demand excellence.',
     ctaLabel: 'Start Your Project',
     ctaHref: '/contact',
-    background: 'gradient',
+    background: 'video',
+    videoPlaceholder: false,
     gradientClass: 'bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20',
   },
   {
@@ -60,6 +61,7 @@ const heroSlides: HeroSlide[] = [
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0)
   const currentSlide = heroSlides[activeSlide]
+  const heroRef = useRef<HTMLDivElement>(null)
 
   // Auto-advance slides every 12 seconds (like turbo)
   useEffect(() => {
@@ -70,8 +72,16 @@ export default function Hero() {
     return () => clearTimeout(timer)
   }, [activeSlide])
 
+  // Parallax scroll effect (Turbo-style)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+
   return (
-    <section className="relative overflow-hidden">
+    <section ref={heroRef} className="relative overflow-hidden">
       {/* Hero container with turbo-style proportions */}
       <div className="relative h-[36vw] min-h-[420px] max-h-[540px]">
         {/* Background Layer - Video or Gradient */}
@@ -84,23 +94,29 @@ export default function Hero() {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            {currentSlide.background === 'video' && currentSlide.videoPlaceholder ? (
+            {currentSlide.background === 'video' && !currentSlide.videoPlaceholder ? (
               <>
-                {/* Video Placeholder - Ready for MP4/MOV files */}
-                <div className={`absolute inset-0 ${currentSlide.gradientClass}`} />
-                {/*
-                Replace above with actual video when ready:
-                <video
-                  className="absolute -inset-px block h-full w-full object-cover video-optimized"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                {/* Turbo-style Video Background with Parallax */}
+                <motion.div
+                  style={{ y: videoY }}
+                  className="absolute inset-0 w-full h-full"
                 >
-                  <source src="/videos/hero-1.mp4" type="video/mp4" />
-                  <source src="/videos/hero-1.mov" type="video/quicktime" />
-                </video>
-                */}
+                  <video
+                    className="absolute inset-0 block h-full w-full object-cover video-optimized"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{ opacity: 0.4 }}
+                  >
+                    <source src="/videos/hero-websites.mp4" type="video/mp4" />
+                  </video>
+                </motion.div>
+              </>
+            ) : currentSlide.background === 'video' && currentSlide.videoPlaceholder ? (
+              <>
+                {/* Video Placeholder - Gradient fallback */}
+                <div className={`absolute inset-0 ${currentSlide.gradientClass}`} />
               </>
             ) : (
               <div className={`absolute inset-0 ${currentSlide.gradientClass}`} />
@@ -108,8 +124,8 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Overlay Layer - Dark tint for readability */}
-        <div className="pointer-events-none absolute inset-0 bg-background/50" />
+        {/* Overlay Layer - Turbo-style dark gradient for readability */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/80" />
 
         {/* Blur Mask Layer - Turbo-style gradient mask */}
         <div
