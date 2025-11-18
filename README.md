@@ -1,6 +1,6 @@
 # AlkynTech
 
-A premium marketing website for AlkynTech - a Texas-based software engineering company specializing in custom websites and workflow automation for small businesses.
+A premium marketing website for AlkynTech - a software engineering company specializing in custom websites and workflow automation for businesses worldwide.
 
 ## 🎨 Design Features
 

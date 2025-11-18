@@ -11,13 +11,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'AlkynTech | Premium Web Development & Automation for Texas Businesses',
-  description: 'Stunning custom websites and intelligent workflow automation. Premium development services for forward-thinking Texas businesses.',
-  keywords: ['web development', 'automation', 'Texas', 'premium websites', 'custom development'],
+  title: 'AlkynTech | Premium Web Development & Automation for Growing Businesses',
+  description: 'Stunning custom websites and intelligent workflow automation. Premium development services for forward-thinking businesses worldwide.',
+  keywords: ['web development', 'automation', 'premium websites', 'custom development', 'remote services'],
   authors: [{ name: 'AlkynTech' }],
   openGraph: {
     title: 'AlkynTech | Premium Web Development & Automation',
-    description: 'Stunning custom websites and intelligent workflow automation for Texas businesses.',
+    description: 'Stunning custom websites and intelligent workflow automation for businesses worldwide.',
     url: 'https://alkyntech.com',
     siteName: 'AlkynTech',
     locale: 'en_US',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AlkynTech | Premium Web Development',
-    description: 'Stunning custom websites and automation for Texas businesses.',
+    description: 'Stunning custom websites and automation for businesses worldwide.',
   },
 }
 

@@ -36,7 +36,7 @@ export default function WhoIHelp() {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight"
             >
-              Built for <span className="text-gradient">Texas Service Businesses</span>
+              Built for <span className="text-gradient">Service Businesses</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

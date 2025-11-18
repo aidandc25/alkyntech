@@ -47,7 +47,7 @@ const heroSlides: HeroSlide[] = [
     id: 'slide-3',
     title: (
       <>
-        Built for <span className="gradient-text">Texas Businesses</span>
+        Built for <span className="gradient-text">Growing Businesses</span>
       </>
     ),
     description: 'Fast, beautiful, conversion-optimized websites that showcase your business at its best.',
@@ -228,7 +228,7 @@ export default function Hero() {
               <div className="hidden md:block">•</div>
               <div>1-3 Week Delivery</div>
               <div className="hidden md:block">•</div>
-              <div>Based in Texas</div>
+              <div>Remote-First</div>
             </div>
           </div>
         </div>

@@ -10,9 +10,9 @@ const trustSignals = [
     description: 'Over a decade building software for businesses of all sizes.',
   },
   {
-    icon: '🤝',
-    title: 'Texas-Based Engineering',
-    description: 'Local, reliable service you can count on.',
+    icon: '🌍',
+    title: 'Remote-First Engineering',
+    description: 'Professional, reliable service from anywhere in the world.',
   },
   {
     icon: '🚫',

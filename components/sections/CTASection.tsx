@@ -83,8 +83,8 @@ export default function CTASection() {
                     </div>
                     <span className="hidden sm:inline">•</span>
                     <div className="flex items-center gap-2">
-                      <span>📍</span>
-                      <span>Texas, USA</span>
+                      <span>🌍</span>
+                      <span>Remote-First</span>
                     </div>
                   </div>
 
@@ -100,7 +100,7 @@ export default function CTASection() {
                     <span>•</span>
                     <span>✓ Transparent Pricing</span>
                     <span>•</span>
-                    <span>✓ Texas-Based</span>
+                    <span>✓ Remote-First</span>
                   </div>
                 </div>
               </div>

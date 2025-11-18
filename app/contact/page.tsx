@@ -178,11 +178,11 @@ export default function ContactPage() {
 
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-2xl glass">
-                        <span className="text-2xl">📍</span>
+                        <span className="text-2xl">🌍</span>
                       </div>
                       <div>
                         <p className="font-medium">Location</p>
-                        <p className="text-muted-foreground">Texas, USA</p>
+                        <p className="text-muted-foreground">Remote-First, Worldwide</p>
                       </div>
                     </div>
 
