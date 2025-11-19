@@ -149,7 +149,7 @@ export default function Hero() {
         />
 
         {/* Slide Dots Navigation */}
-        <div className="absolute top-6 left-6 z-30 flex gap-2">
+        <div className="absolute top-28 md:top-6 left-6 z-30 flex gap-2">
           {heroSlides.map((slide, index) => (
             <button
               key={slide.id}
