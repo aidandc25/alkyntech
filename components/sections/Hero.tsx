@@ -13,6 +13,7 @@ type HeroSlide = {
   background: 'gradient' | 'video'
   gradientClass?: string
   videoPlaceholder?: boolean
+  videoSrc?: string
 }
 
 const heroSlides: HeroSlide[] = [
@@ -28,6 +29,7 @@ const heroSlides: HeroSlide[] = [
     ctaHref: '/contact',
     background: 'video',
     videoPlaceholder: false,
+    videoSrc: '/videos/hero-websites.mp4',
     gradientClass: 'bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20',
   },
   {
@@ -40,7 +42,9 @@ const heroSlides: HeroSlide[] = [
     description: 'Streamline your workflows with intelligent automation that saves time and eliminates repetitive tasks.',
     ctaLabel: 'Learn More',
     ctaHref: '/services',
-    background: 'gradient',
+    background: 'video',
+    videoPlaceholder: false,
+    videoSrc: '/videos/hero-automation.mp4',
     gradientClass: 'bg-gradient-to-br from-secondary/20 via-accent/10 to-primary/20',
   },
   {
@@ -53,7 +57,9 @@ const heroSlides: HeroSlide[] = [
     description: 'Fast, beautiful, conversion-optimized websites that showcase your business at its best.',
     ctaLabel: 'View Our Work',
     ctaHref: '/work',
-    background: 'gradient',
+    background: 'video',
+    videoPlaceholder: false,
+    videoSrc: '/videos/hero-analytics.mp4',
     gradientClass: 'bg-gradient-to-br from-accent/20 via-primary/10 to-secondary/20',
   },
 ]
@@ -94,7 +100,7 @@ export default function Hero() {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            {currentSlide.background === 'video' && !currentSlide.videoPlaceholder ? (
+            {currentSlide.background === 'video' && !currentSlide.videoPlaceholder && currentSlide.videoSrc ? (
               <>
                 {/* Turbo-style Video Background with Parallax */}
                 <motion.div
@@ -102,6 +108,7 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full"
                 >
                   <video
+                    key={currentSlide.videoSrc}
                     className="absolute inset-0 block h-full w-full object-cover video-optimized"
                     autoPlay
                     loop
@@ -109,7 +116,7 @@ export default function Hero() {
                     playsInline
                     style={{ opacity: 0.4 }}
                   >
-                    <source src="/videos/hero-websites.mp4" type="video/mp4" />
+                    <source src={currentSlide.videoSrc} type="video/mp4" />
                   </video>
                 </motion.div>
               </>
