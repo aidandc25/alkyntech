@@ -92,7 +92,7 @@ export default function Hero() {
   const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden">
+    <section ref={heroRef} className="relative overflow-hidden pt-24">
       {/* Hero container with turbo-style proportions */}
       <div className="relative h-[36vw] min-h-[420px] max-h-[540px]">
         {/* Background Layer - Video or Gradient */}

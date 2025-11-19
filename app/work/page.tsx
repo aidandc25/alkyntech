@@ -104,7 +104,7 @@ export default function WorkPage() {
       <Header />
       <main className="relative min-h-screen overflow-hidden">
         {/* Hero Section with Video Background */}
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-24">
           {/* Video Background Layer */}
           <div className="absolute inset-0 z-0">
             <video

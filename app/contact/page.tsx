@@ -54,7 +54,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-32 pb-20">
+      <main className="min-h-screen pt-28 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             {/* Header */}
