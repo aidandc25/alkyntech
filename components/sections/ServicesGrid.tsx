@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 
 const services = [
@@ -58,16 +59,16 @@ export default function ServicesGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="relative overflow-hidden rounded-2xl cursor-pointer group"
-            >
+            <Link key={service.id} href="/services">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative overflow-hidden rounded-2xl cursor-pointer group"
+              >
               {/* Background color inversion */}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
@@ -156,7 +157,8 @@ export default function ServicesGrid() {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
