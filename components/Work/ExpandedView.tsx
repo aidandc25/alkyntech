@@ -49,8 +49,9 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
           onClick={onClose}
         >
           <div
-            className="h-full w-full overflow-y-auto"
+            className="h-full w-full overflow-y-auto overscroll-contain"
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
