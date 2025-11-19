@@ -32,7 +32,7 @@ const heroSlides: HeroSlide[] = [
     videoPlaceholder: false,
     videoSrc: '/videos/hero-websites.mp4',
     gradientClass: 'bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20',
-    duration: 6000, // 6 seconds
+    duration: 4000, // 4 seconds for first slide on initial load
   },
   {
     id: 'slide-2',
