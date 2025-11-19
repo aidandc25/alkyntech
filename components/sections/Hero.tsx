@@ -14,6 +14,7 @@ type HeroSlide = {
   gradientClass?: string
   videoPlaceholder?: boolean
   videoSrc?: string
+  duration?: number
 }
 
 const heroSlides: HeroSlide[] = [
@@ -31,6 +32,7 @@ const heroSlides: HeroSlide[] = [
     videoPlaceholder: false,
     videoSrc: '/videos/hero-websites.mp4',
     gradientClass: 'bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20',
+    duration: 6000, // 6 seconds
   },
   {
     id: 'slide-2',
@@ -46,6 +48,7 @@ const heroSlides: HeroSlide[] = [
     videoPlaceholder: false,
     videoSrc: '/videos/hero-automation.mp4',
     gradientClass: 'bg-gradient-to-br from-secondary/20 via-accent/10 to-primary/20',
+    duration: 6000, // 6 seconds
   },
   {
     id: 'slide-3',
@@ -61,6 +64,7 @@ const heroSlides: HeroSlide[] = [
     videoPlaceholder: false,
     videoSrc: '/videos/hero-analytics.mp4',
     gradientClass: 'bg-gradient-to-br from-accent/20 via-primary/10 to-secondary/20',
+    duration: 6000, // 6 seconds
   },
 ]
 
@@ -69,14 +73,15 @@ export default function Hero() {
   const currentSlide = heroSlides[activeSlide]
   const heroRef = useRef<HTMLDivElement>(null)
 
-  // Auto-advance slides every 12 seconds (like turbo)
+  // Auto-advance slides with custom durations per slide
   useEffect(() => {
+    const duration = currentSlide.duration || 12000 // Default to 12 seconds if not specified
     const timer = setTimeout(() => {
       setActiveSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 12000)
+    }, duration)
 
     return () => clearTimeout(timer)
-  }, [activeSlide])
+  }, [activeSlide, currentSlide.duration])
 
   // Parallax scroll effect (Turbo-style)
   const { scrollYProgress } = useScroll({
