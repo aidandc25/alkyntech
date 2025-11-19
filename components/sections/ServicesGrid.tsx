@@ -11,10 +11,12 @@ const services = [
     icon: '💻',
     title: 'Custom Websites That Convert',
     benefits: [
-      'Modern, mobile-first design',
-      'Easy for you to update',
-      'Found on Google (SEO optimized)',
-      'Fast loading, always reliable',
+      'Online payments & secure checkout',
+      'Appointment booking with reminders',
+      'Contact forms & quote requests',
+      'Analytics to track your ROI',
+      'Mobile-optimized for any device',
+      'SEO to get found on Google',
     ],
   },
   {
@@ -22,10 +24,12 @@ const services = [
     icon: '⚡',
     title: 'Automation That Saves You Hours',
     benefits: [
-      'Connect your tools (forms, email, CRM)',
-      'Auto-respond to leads instantly',
-      'Sync data between platforms',
-      'Eliminate repetitive admin work',
+      'Email & SMS automation for follow-ups',
+      'Smart review management (bad reviews stay private)',
+      'Online ordering for restaurants',
+      'Automated appointment reminders',
+      'CRM & workflow integration',
+      'AI chatbot for customer support',
     ],
   },
 ]
