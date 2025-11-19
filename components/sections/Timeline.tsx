@@ -10,7 +10,7 @@ const steps = [
     icon: '📅',
     title: 'Discovery Call',
     duration: '15-30 minutes',
-    description: 'We discuss your needs, goals, and challenges in plain English. No pressure, no sales pitch - just a conversation about how I can help your business.',
+    description: 'Discussion of your needs, goals, and challenges in plain English. No pressure, no sales pitch - just a conversation about how AlkynTech can help your business.',
     details: [
       'Understand your current situation',
       'Identify pain points and opportunities',
@@ -22,12 +22,12 @@ const steps = [
     id: 2,
     icon: '🛠️',
     title: 'Custom Build',
-    duration: '1-3 weeks',
-    description: 'I build exactly what you need - whether it is a modern website, automation workflow, or both. You will see progress along the way and provide feedback.',
+    duration: 'As quick as a week',
+    description: 'Build exactly what you need - whether it is a modern website, automation workflow, or both. See progress along the way and provide feedback.',
     details: [
       'Clean, modern design that matches your brand',
       'Mobile-responsive and fast',
-      'Easy for you to manage',
+      'Easy to manage',
       'Regular updates during development',
     ],
   },
@@ -36,7 +36,7 @@ const steps = [
     icon: '🚀',
     title: 'Launch & Support',
     duration: 'Ongoing',
-    description: 'Your site goes live or automation starts running. I provide training and ongoing support so you feel confident managing everything.',
+    description: 'Your site goes live or automation starts running. Training and ongoing support provided so you feel confident with everything.',
     details: [
       'Smooth launch with zero downtime',
       'Training on how to use and update',

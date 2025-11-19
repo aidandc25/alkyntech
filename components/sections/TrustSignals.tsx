@@ -5,9 +5,9 @@ import { Card } from '@/components/ui/card'
 
 const trustSignals = [
   {
-    icon: '🎯',
-    title: '10+ Years Experience',
-    description: 'Over a decade building software for businesses of all sizes.',
+    icon: '👨‍💻',
+    title: 'Professional Software Engineers',
+    description: 'Expert engineering with modern best practices and cutting-edge technology.',
   },
   {
     icon: '🌍',
@@ -15,9 +15,9 @@ const trustSignals = [
     description: 'Professional, reliable service from anywhere in the world.',
   },
   {
-    icon: '🚫',
-    title: 'No Long-Term Contracts',
-    description: 'Work with me because you want to, not because you have to.',
+    icon: '🎯',
+    title: 'Fully Managed Service',
+    description: 'Sit back and relax. Everything is handled—updates, adjustments, refreshes, and ongoing maintenance.',
   },
   {
     icon: '💰',
@@ -27,12 +27,12 @@ const trustSignals = [
   {
     icon: '💬',
     title: 'Plain-English Communication',
-    description: 'I explain tech in terms you actually understand.',
+    description: 'Tech explained in terms that make sense, without the jargon.',
   },
   {
     icon: '⚡',
-    title: 'Fast Turnaround',
-    description: 'Most projects completed in 1-3 weeks, not months.',
+    title: 'Launch in as Little as a Week',
+    description: 'Fast delivery without compromising quality. Get online quickly.',
   },
 ]
 

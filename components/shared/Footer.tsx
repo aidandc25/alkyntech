@@ -56,9 +56,9 @@ export default function Footer() {
             © {new Date().getFullYear()} AlkynTech LLC. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <span>No Long-Term Contracts</span>
+            <span>Fully Managed</span>
             <span>•</span>
-            <span>1-3 Week Delivery</span>
+            <span>Fast Delivery</span>
           </div>
         </div>
       </div>

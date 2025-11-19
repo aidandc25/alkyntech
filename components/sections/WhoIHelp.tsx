@@ -17,8 +17,8 @@ const targetAudiences = [
     label: 'Local Retail & Shops',
   },
   {
-    icon: '📋',
-    label: 'Drowning in Admin Work',
+    icon: '🍔',
+    label: 'Restaurants & Food Trucks',
   },
 ]
 
@@ -46,7 +46,7 @@ export default function WhoIHelp() {
               className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
               If you're spending more time on your website or admin tasks than running your
-              business, I can help.
+              business, AlkynTech can help.
             </motion.p>
           </div>
 
@@ -88,7 +88,7 @@ export default function WhoIHelp() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-muted-foreground"
           >
-            I work with businesses that need a better online presence or want to automate
+            Working with businesses that need a better online presence or want to automate
             time-consuming workflows—without the tech jargon.
           </motion.p>
         </div>

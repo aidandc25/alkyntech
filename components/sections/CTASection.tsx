@@ -44,7 +44,7 @@ export default function CTASection() {
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     Get in touch to discuss your project. No pressure, no commitment—just a
-                    conversation about how I can help.
+                    conversation about how AlkynTech can help.
                   </p>
                 </div>
 
@@ -84,7 +84,7 @@ export default function CTASection() {
                 {/* Trust Badges */}
                 <div className="pt-6 border-t border-border/60">
                   <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
-                    <span>✓ No Long-Term Contracts</span>
+                    <span>✓ Fully Managed Service</span>
                     <span>•</span>
                     <span>✓ Transparent Pricing</span>
                     <span>•</span>

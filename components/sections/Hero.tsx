@@ -55,7 +55,7 @@ const heroSlides: HeroSlide[] = [
       </>
     ),
     description: 'Fast, beautiful, conversion-optimized websites that showcase your business at its best.',
-    ctaLabel: 'View Our Work',
+    ctaLabel: 'View Portfolio',
     ctaHref: '/work',
     background: 'video',
     videoPlaceholder: false,
@@ -231,9 +231,9 @@ export default function Hero() {
                 <span>Available for Projects</span>
               </div>
               <div className="hidden md:block">•</div>
-              <div>No Long-Term Contracts</div>
+              <div>Fully Managed</div>
               <div className="hidden md:block">•</div>
-              <div>1-3 Week Delivery</div>
+              <div>Fast Delivery</div>
               <div className="hidden md:block">•</div>
               <div>Remote-First</div>
             </div>
