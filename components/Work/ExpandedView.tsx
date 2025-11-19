@@ -135,6 +135,20 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                           </span>
                         ))}
                       </div>
+                      {project.link && (
+                        <div className="pt-4">
+                          <motion.a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="btn-premium inline-block"
+                          >
+                            Visit Live Site →
+                          </motion.a>
+                        </div>
+                      )}
                     </motion.div>
                   </div>
                 </div>
@@ -155,15 +169,15 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="bento-card">
                       <div className="text-sm uppercase tracking-wider text-muted-foreground mb-2">Role</div>
-                      <div className="text-fluid-lg font-semibold">Full Stack Development</div>
+                      <div className="text-fluid-lg font-semibold">{project.role}</div>
                     </div>
                     <div className="bento-card">
                       <div className="text-sm uppercase tracking-wider text-muted-foreground mb-2">Timeline</div>
-                      <div className="text-fluid-lg font-semibold">2-3 Weeks</div>
+                      <div className="text-fluid-lg font-semibold">{project.timeline}</div>
                     </div>
                     <div className="bento-card">
                       <div className="text-sm uppercase tracking-wider text-muted-foreground mb-2">Year</div>
-                      <div className="text-fluid-lg font-semibold">2025</div>
+                      <div className="text-fluid-lg font-semibold">{project.year}</div>
                     </div>
                   </div>
                 </section>
@@ -173,7 +187,7 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                   <h2 className="text-fluid-3xl font-bold">The Challenge</h2>
                   <div className="bento-card">
                     <p className="text-fluid-base text-muted-foreground leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                      {project.challenge}
                     </p>
                   </div>
                 </section>
@@ -183,15 +197,10 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                   <h2 className="text-fluid-3xl font-bold">The Solution</h2>
                   <div className="bento-card">
                     <p className="text-fluid-base text-muted-foreground leading-relaxed mb-6">
-                      A comprehensive solution delivered that exceeded expectations. Key features included:
+                      {project.solution.intro}
                     </p>
                     <ul className="space-y-4">
-                      {[
-                        'Modern, responsive design with premium UI/UX',
-                        'Advanced automation workflows for efficiency',
-                        'Seamless integration with existing systems',
-                        'Optimized for performance and SEO',
-                      ].map((item, index) => (
+                      {project.solution.features.map((item, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <svg className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -205,19 +214,19 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
 
                 {/* Results */}
                 <section className="space-y-6">
-                  <h2 className="text-fluid-3xl font-bold">Results</h2>
+                  <h2 className="text-fluid-3xl font-bold">Key Highlights</h2>
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="bento-card text-center">
-                      <div className="text-5xl font-bold gradient-text mb-2">8×</div>
-                      <div className="text-sm text-muted-foreground">Faster Performance</div>
+                      <div className="text-5xl font-bold gradient-text mb-2">{project.results.metric1.value}</div>
+                      <div className="text-sm text-muted-foreground">{project.results.metric1.label}</div>
                     </div>
                     <div className="bento-card text-center">
-                      <div className="text-5xl font-bold gradient-text mb-2">95%</div>
-                      <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                      <div className="text-5xl font-bold gradient-text mb-2">{project.results.metric2.value}</div>
+                      <div className="text-sm text-muted-foreground">{project.results.metric2.label}</div>
                     </div>
                     <div className="bento-card text-center">
-                      <div className="text-5xl font-bold gradient-text mb-2">2.5k+</div>
-                      <div className="text-sm text-muted-foreground">Monthly Users</div>
+                      <div className="text-5xl font-bold gradient-text mb-2">{project.results.metric3.value}</div>
+                      <div className="text-sm text-muted-foreground">{project.results.metric3.label}</div>
                     </div>
                   </div>
                 </section>
@@ -226,10 +235,10 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                 <section className="text-center pt-12">
                   <div className="bento-card">
                     <h3 className="text-fluid-2xl font-bold mb-4">
-                      Ready to start your project?
+                      Interested in working together?
                     </h3>
                     <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                      Let's build something amazing together. Get in touch to discuss your vision.
+                      I'm always open to discussing new projects and opportunities.
                     </p>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -237,7 +246,7 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
                       onClick={() => window.location.href = '/contact'}
                       className="btn-premium"
                     >
-                      Get Started →
+                      Get In Touch →
                     </motion.button>
                   </div>
                 </section>

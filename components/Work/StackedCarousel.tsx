@@ -20,6 +20,21 @@ export type Project = {
   imageSrc?: string
   videoSrc?: string
   gradient?: string
+  link?: string
+  // Detailed project information
+  role: string
+  timeline: string
+  year: string
+  challenge: string
+  solution: {
+    intro: string
+    features: string[]
+  }
+  results: {
+    metric1: { value: string; label: string }
+    metric2: { value: string; label: string }
+    metric3: { value: string; label: string }
+  }
 }
 
 type StackedCarouselProps = {
