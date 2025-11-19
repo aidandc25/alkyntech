@@ -40,7 +40,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold">Get in Touch</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>hello@alkyntech.com</li>
+              <li>info@alkyntech.com</li>
               <li>Remote-First</li>
               <li className="pt-2 text-xs flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />

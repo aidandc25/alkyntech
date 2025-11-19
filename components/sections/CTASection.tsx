@@ -62,7 +62,7 @@ export default function CTASection() {
                     size="xl"
                     variant="secondary"
                     onClick={() => {
-                      window.location.href = 'mailto:hello@alkyntech.com'
+                      window.location.href = 'mailto:info@alkyntech.com'
                     }}
                   >
                     ✉️ Send Email
@@ -75,10 +75,10 @@ export default function CTASection() {
                     <div className="flex items-center gap-2">
                       <span>📧</span>
                       <a
-                        href="mailto:hello@alkyntech.com"
+                        href="mailto:info@alkyntech.com"
                         className="text-foreground hover:text-primary transition-colors"
                       >
-                        hello@alkyntech.com
+                        info@alkyntech.com
                       </a>
                     </div>
                     <span className="hidden sm:inline">•</span>

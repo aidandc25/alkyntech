@@ -20,11 +20,35 @@ export default function ContactPage() {
     e.preventDefault()
     setStatus('sending')
 
-    // TODO: Implement form submission (Formspree, email service, etc.)
-    setTimeout(() => {
-      setStatus('success')
-      setFormData({ name: '', email: '', phone: '', company: '', website: '', message: '' })
-    }, 1000)
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '7778b129-df8f-4bf2-b9d9-a9e9f55ab81b',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          website: formData.website,
+          message: formData.message,
+          from_name: 'AlkynTech Contact Form',
+          subject: `New Contact Form Submission from ${formData.name}`,
+        }),
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', phone: '', company: '', website: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setStatus('error')
+    }
   }
 
   return (
@@ -162,6 +186,16 @@ export default function ContactPage() {
                       Thanks! We'll get back to you within 24 hours.
                     </motion.p>
                   )}
+
+                  {status === 'error' && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-destructive text-sm text-center"
+                    >
+                      Something went wrong. Please try again or email us directly at info@alkyntech.com
+                    </motion.p>
+                  )}
                 </form>
               </motion.div>
 
@@ -181,8 +215,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium">Email</p>
-                        <a href="mailto:hello@alkyntech.com" className="text-muted-foreground hover:text-accent transition-colors">
-                          hello@alkyntech.com
+                        <a href="mailto:info@alkyntech.com" className="text-muted-foreground hover:text-accent transition-colors">
+                          info@alkyntech.com
                         </a>
                       </div>
                     </div>
