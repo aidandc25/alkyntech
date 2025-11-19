@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card } from '@/components/ui/card'
 
 const steps = [
@@ -47,16 +47,25 @@ const steps = [
 ]
 
 export default function Timeline() {
-  const [expandedStep, setExpandedStep] = useState<number | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const toggleStep = (stepId: number) => {
-    setExpandedStep(expandedStep === stepId ? null : stepId)
-  }
+  // Scroll progress for the connecting line
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center'],
+  })
+
+  const lineWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
   return (
-    <section id="process" className="section-padding relative bg-background">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+    <section id="process" className="section-padding relative bg-background overflow-hidden" ref={containerRef}>
+      {/* Background blur orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="blur-orb-lg absolute right-1/4 top-1/4 bg-accent/5" />
+      </div>
+
+      <div className="container relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,100 +86,116 @@ export default function Timeline() {
           </motion.p>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Card
-                variant="elevated"
-                padding="none"
-                className="overflow-hidden cursor-pointer"
-                onClick={() => toggleStep(step.id)}
-              >
-                {/* Main Content */}
-                <div className="p-8 flex items-start gap-6">
-                  {/* Step Number */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-lg">
-                    {step.id}
-                  </div>
+        {/* Horizontal Timeline */}
+        <div className="max-w-7xl mx-auto">
+          {/* Progress Line */}
+          <div className="relative mb-12 hidden md:block">
+            <div className="h-1 w-full bg-border/50 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-primary via-secondary to-accent"
+                style={{ width: lineWidth }}
+              />
+            </div>
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-3xl">{step.icon}</span>
-                        <h3 className="text-2xl font-semibold">{step.title}</h3>
-                      </div>
-                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full whitespace-nowrap">
-                        {step.duration}
-                      </span>
+            {/* Step indicators on the line */}
+            <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-4">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step.id}
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.2, type: 'spring' }}
+                  className="w-8 h-8 rounded-full bg-primary border-4 border-background flex items-center justify-center text-xs font-bold text-white"
+                >
+                  {step.id}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+              >
+                <Card
+                  variant="glass"
+                  padding="none"
+                  className="h-full border-2 border-border/50 hover:border-primary/50 transition-all duration-500 group"
+                >
+                  <div className="p-6 lg:p-8 space-y-4">
+                    {/* Icon with gradient background */}
+                    <div className="relative inline-flex">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl group-hover:blur-2xl transition-all duration-500" />
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="relative text-6xl"
+                      >
+                        {step.icon}
+                      </motion.div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+
+                    {/* Step number badge */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                      <span>Step {step.id}</span>
+                      <span className="text-xs opacity-70">• {step.duration}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold group-hover:text-primary transition-colors duration-300">
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed text-sm">
                       {step.description}
                     </p>
 
-                    {/* Expand Indicator */}
-                    <div className="mt-4 flex items-center gap-2 text-primary font-medium">
-                      <span className="text-sm">
-                        {expandedStep === step.id ? 'Show less' : 'Learn more'}
-                      </span>
-                      <motion.span
-                        animate={{
-                          rotate: expandedStep === step.id ? 90 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        →
-                      </motion.span>
+                    {/* Details List */}
+                    <div className="pt-4 border-t border-border/50">
+                      <p className="text-xs font-semibold text-primary mb-3">What to expect:</p>
+                      <ul className="space-y-2">
+                        {step.details.map((detail, i) => (
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 * i }}
+                            className="flex items-start gap-2 text-xs text-muted-foreground"
+                          >
+                            <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-primary/20 text-primary flex items-center justify-center text-[10px] font-bold">
+                              ✓
+                            </span>
+                            <span>{detail}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </div>
 
-                {/* Expanded Details */}
-                <AnimatePresence>
-                  {expandedStep === step.id && (
+                    {/* Hover arrow indicator */}
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="border-t border-border bg-muted/30"
+                      className="flex items-center gap-2 text-primary font-medium text-sm pt-2"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1, x: 5 }}
                     >
-                      <div className="p-8 pl-[5.5rem]">
-                        <h4 className="font-semibold mb-4">What to expect:</h4>
-                        <ul className="space-y-3">
-                          {step.details.map((detail, i) => (
-                            <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                              <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-xs">
-                                ✓
-                              </span>
-                              <span>{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <span>Next step</span>
+                      <span className="text-lg">→</span>
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* Connecting Line Decoration (Mobile Hidden) */}
-        <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-[60%] -z-10">
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-            className="w-full h-full bg-gradient-to-b from-transparent via-border to-transparent origin-top"
-          />
+          {/* Mobile connecting line */}
+          <div className="md:hidden absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
         </div>
       </div>
     </section>

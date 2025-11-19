@@ -1,5 +1,6 @@
 import Hero from '@/components/sections/Hero'
 import ServicesGrid from '@/components/sections/ServicesGrid'
+import InfiniteMarquee from '@/components/sections/InfiniteMarquee'
 import WhoIHelp from '@/components/sections/WhoIHelp'
 import Timeline from '@/components/sections/Timeline'
 import TrustSignals from '@/components/sections/TrustSignals'
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Hero />
         <ServicesGrid />
+        <InfiniteMarquee />
         <WhoIHelp />
         <Timeline />
         <TrustSignals />
