@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     website: '',
     message: '',
@@ -22,7 +23,7 @@ export default function ContactPage() {
     // TODO: Implement form submission (Formspree, email service, etc.)
     setTimeout(() => {
       setStatus('success')
-      setFormData({ name: '', email: '', company: '', website: '', message: '' })
+      setFormData({ name: '', email: '', phone: '', company: '', website: '', message: '' })
     }, 1000)
   }
 
@@ -84,6 +85,20 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300"
                       placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300"
+                      placeholder="+1 (555) 123-4567"
                     />
                   </div>
 
