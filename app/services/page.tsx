@@ -53,7 +53,7 @@ export default function ServicesPage() {
             >
               <div className="glass-subtle px-4 py-2 rounded-full">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">
-                  What We Do Best
+                  Premium Solutions
                 </p>
               </div>
             </motion.div>
@@ -64,7 +64,7 @@ export default function ServicesPage() {
               transition={{ delay: 0.1 }}
               className="text-fluid-hero font-bold"
             >
-              Our <span className="gradient-text">Services</span>
+              <span className="gradient-text">Services</span>
             </motion.h1>
 
             <motion.p
@@ -150,7 +150,7 @@ export default function ServicesPage() {
           <div className="max-w-5xl mx-auto mt-32">
             <div className="text-center mb-16">
               <h2 className="text-fluid-3xl font-bold mb-4">
-                Our <span className="gradient-text">Process</span>
+                The <span className="gradient-text">Process</span>
               </h2>
               <p className="text-fluid-base text-muted-foreground">
                 Simple, transparent, and efficient from start to finish
@@ -159,7 +159,7 @@ export default function ServicesPage() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { step: '01', title: 'Discovery', desc: 'We learn about your goals and requirements' },
+                { step: '01', title: 'Discovery', desc: 'Learn about your goals and requirements' },
                 { step: '02', title: 'Design', desc: 'Create mockups and get your feedback' },
                 { step: '03', title: 'Develop', desc: 'Build your solution with modern tech' },
                 { step: '04', title: 'Deploy', desc: 'Launch and provide ongoing support' },
@@ -192,19 +192,19 @@ export default function ServicesPage() {
               {[
                 {
                   q: 'How long does a typical project take?',
-                  a: 'Most projects are delivered within 1-3 weeks, depending on complexity and scope. We prioritize speed without compromising quality.',
+                  a: 'Most projects are delivered as quick as a week, depending on complexity and scope. Speed prioritized without compromising quality.',
                 },
                 {
-                  q: 'Do you require long-term contracts?',
-                  a: 'No! We work on a project basis with no long-term commitments. You only pay for what you need, when you need it.',
+                  q: 'Are long-term contracts required?',
+                  a: 'No! Projects are handled on a per-project basis with no long-term commitments. Pay only for what you need, when you need it.',
                 },
                 {
-                  q: 'What technologies do you use?',
-                  a: 'We use modern, proven technologies like React, Next.js, Node.js, and various AI/automation tools to build fast, scalable solutions.',
+                  q: 'What technologies are used?',
+                  a: 'Modern, proven technologies like React, Next.js, Node.js, and various AI/automation tools to build fast, scalable solutions.',
                 },
                 {
-                  q: 'Do you provide ongoing support?',
-                  a: 'Yes! We offer maintenance and support packages to keep your website running smoothly and up-to-date after launch.',
+                  q: 'Is ongoing support provided?',
+                  a: 'Yes! Maintenance and support packages are available to keep your website running smoothly and up-to-date after launch.',
                 },
               ].map((faq, index) => (
                 <motion.div
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                 Ready to get started?
               </h2>
               <p className="text-fluid-base text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Let's discuss your project and see how we can help bring your vision to life with premium development and automation.
+                Discuss your project and see how AlkynTech can help bring your vision to life with premium development and automation.
               </p>
               <Link href="/contact">
                 <motion.button

@@ -68,7 +68,7 @@ export default function WorkPage() {
               </div>
             </div>
             <h1 className="text-fluid-hero font-bold">
-              Our <span className="gradient-text">Work</span>
+              <span className="gradient-text">Portfolio</span>
             </h1>
             <p className="text-fluid-xl text-muted-foreground max-w-2xl mx-auto">
               Premium projects that drive results and exceed expectations
@@ -95,12 +95,12 @@ export default function WorkPage() {
                 <div className="text-sm text-muted-foreground">Client Satisfaction</div>
               </div>
               <div className="bento-card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">3 Weeks</div>
-                <div className="text-sm text-muted-foreground">Avg. Delivery Time</div>
+                <div className="text-4xl font-bold gradient-text mb-2">Fast</div>
+                <div className="text-sm text-muted-foreground">Delivery Timelines</div>
               </div>
               <div className="bento-card text-center">
-                <div className="text-4xl font-bold gradient-text mb-2">5 Years</div>
-                <div className="text-sm text-muted-foreground">Experience</div>
+                <div className="text-4xl font-bold gradient-text mb-2">24/7</div>
+                <div className="text-sm text-muted-foreground">Support Available</div>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function WorkPage() {
                 Ready to start your project?
               </h2>
               <p className="text-fluid-base text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Let's build something amazing together. Get in touch to discuss your vision and see how we can help bring it to life.
+                Build something amazing. Get in touch to discuss your vision and see how AlkynTech can help bring it to life.
               </p>
               <a href="/contact">
                 <button className="btn-premium">

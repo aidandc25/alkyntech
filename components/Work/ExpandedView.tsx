@@ -179,10 +179,10 @@ export default function ExpandedView({ project, onClose }: ExpandedViewProps) {
 
                 {/* Solution */}
                 <section className="space-y-6">
-                  <h2 className="text-fluid-3xl font-bold">Our Solution</h2>
+                  <h2 className="text-fluid-3xl font-bold">The Solution</h2>
                   <div className="bento-card">
                     <p className="text-fluid-base text-muted-foreground leading-relaxed mb-6">
-                      We delivered a comprehensive solution that exceeded expectations. Here's what we built:
+                      A comprehensive solution delivered that exceeded expectations. Key features included:
                     </p>
                     <ul className="space-y-4">
                       {[
