@@ -6,8 +6,8 @@ import { Card } from '@/components/ui/card'
 const trustSignals = [
   {
     icon: '👨‍💻',
-    title: 'Professional Software Engineers',
-    description: 'Expert engineering with modern best practices and cutting-edge technology.',
+    title: 'Expert Engineering',
+    description: 'Professional-grade development with modern best practices and cutting-edge technology.',
   },
   {
     icon: '🌍',
