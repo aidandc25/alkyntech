@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import Link from 'next/link'
 
 export default function CTASection() {
   return (
@@ -42,31 +43,18 @@ export default function CTASection() {
                     Ready to <span className="text-gradient">Grow Your Business</span>?
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Book a free 15-minute discovery call. No pressure, no commitment—just a
+                    Get in touch to discuss your project. No pressure, no commitment—just a
                     conversation about how I can help.
                   </p>
                 </div>
 
-                {/* Contact Options */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Button
-                    size="xl"
-                    onClick={() => {
-                      // TODO: Replace with actual Cal.com integration
-                      window.open('https://cal.com', '_blank')
-                    }}
-                  >
-                    📅 Schedule Free Call
-                  </Button>
-                  <Button
-                    size="xl"
-                    variant="secondary"
-                    onClick={() => {
-                      window.location.href = 'mailto:info@alkyntech.com'
-                    }}
-                  >
-                    ✉️ Send Email
-                  </Button>
+                {/* Contact Button */}
+                <div className="flex items-center justify-center">
+                  <Link href="/contact">
+                    <Button size="xl">
+                      Get in Touch →
+                    </Button>
+                  </Link>
                 </div>
 
                 {/* Contact Info */}
