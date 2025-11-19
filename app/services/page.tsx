@@ -29,7 +29,7 @@ const services = [
     features: [
       'Email & SMS Automation for Follow-ups',
       'Smart Review Management (Protect Your Reputation)',
-      'Online Ordering Systems for Restaurants',
+      'Online Ordering Systems',
       'Automated Appointment Reminders',
       'AI Chatbot for 24/7 Customer Support',
       'CRM & Workflow Integration',

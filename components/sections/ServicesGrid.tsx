@@ -26,7 +26,7 @@ const services = [
     benefits: [
       'Email & SMS automation for follow-ups',
       'Smart review management (bad reviews stay private)',
-      'Online ordering for restaurants',
+      'Online ordering systems',
       'Automated appointment reminders',
       'CRM & workflow integration',
       'AI chatbot for customer support',
