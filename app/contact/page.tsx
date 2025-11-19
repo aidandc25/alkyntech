@@ -10,7 +10,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     company: '',
-    budget: '',
+    website: '',
     message: '',
   })
   const [status, setStatus] = useState('')
@@ -22,7 +22,7 @@ export default function ContactPage() {
     // TODO: Implement form submission (Formspree, email service, etc.)
     setTimeout(() => {
       setStatus('success')
-      setFormData({ name: '', email: '', company: '', budget: '', message: '' })
+      setFormData({ name: '', email: '', company: '', website: '', message: '' })
     }, 1000)
   }
 
@@ -102,21 +102,17 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="budget" className="block text-sm font-medium mb-2">
-                      Project Budget
+                    <label htmlFor="website" className="block text-sm font-medium mb-2">
+                      Website or Social Media Link
                     </label>
-                    <select
-                      id="budget"
-                      value={formData.budget}
-                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                    <input
+                      type="url"
+                      id="website"
+                      value={formData.website}
+                      onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                       className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300"
-                    >
-                      <option value="">Select a range</option>
-                      <option value="5k-10k">$5k - $10k</option>
-                      <option value="10k-25k">$10k - $25k</option>
-                      <option value="25k-50k">$25k - $50k</option>
-                      <option value="50k+">$50k+</option>
-                    </select>
+                      placeholder="https://yourwebsite.com"
+                    />
                   </div>
 
                   <div>
