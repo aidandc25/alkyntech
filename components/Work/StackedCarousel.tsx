@@ -30,7 +30,7 @@ type StackedCarouselProps = {
 export default function StackedCarousel({ projects, onProjectClick }: StackedCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isScrolling, setIsScrolling] = useState(false)
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>()
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   // Calculate which project goes in which slot
   const getProjectForSlot = (slotIndex: number) => {
