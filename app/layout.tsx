@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description: 'Stunning custom websites and intelligent workflow automation. Premium development services for forward-thinking businesses worldwide.',
   keywords: ['web development', 'automation', 'premium websites', 'custom development', 'remote services'],
   authors: [{ name: 'AlkynTech' }],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   openGraph: {
     title: 'AlkynTech | Premium Web Development & Automation',
     description: 'Stunning custom websites and intelligent workflow automation for businesses worldwide.',
