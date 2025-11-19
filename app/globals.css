@@ -103,6 +103,11 @@ html.lenis, html.lenis body {
     text-wrap: balance;
   }
 
+  /* Section padding - consistent spacing between sections */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
   /* Glass morphism variants - Works in both light and dark mode */
   .glass {
     @apply backdrop-blur-xl border;
@@ -164,6 +169,10 @@ html.lenis, html.lenis body {
 
   /* Gradient text */
   .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
   }
 
