@@ -14,6 +14,7 @@ export default function ContactPage() {
     website: '',
     message: '',
   })
+  const [consentGiven, setConsentGiven] = useState(false)
   const [status, setStatus] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,6 +43,7 @@ export default function ContactPage() {
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', phone: '', company: '', website: '', message: '' })
+        setConsentGiven(false)
       } else {
         setStatus('error')
       }
@@ -169,9 +171,43 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Consent Checkbox - GDPR Required */}
+                  <div className="pt-2">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={consentGiven}
+                        onChange={(e) => setConsentGiven(e.target.checked)}
+                        className="mt-1 w-5 h-5 rounded border-2 border-white/20 bg-white/5 text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-0 cursor-pointer transition-all"
+                      />
+                      <span className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                        I agree to the{' '}
+                        <a
+                          href="/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline font-medium"
+                        >
+                          Privacy Policy
+                        </a>
+                        {' '}and{' '}
+                        <a
+                          href="/terms-of-service"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline font-medium"
+                        >
+                          Terms of Service
+                        </a>
+                        . I consent to AlkynTech collecting and processing my personal information to respond to my inquiry. *
+                      </span>
+                    </label>
+                  </div>
+
                   <button
                     type="submit"
-                    disabled={status === 'sending'}
+                    disabled={status === 'sending' || !consentGiven}
                     className="w-full btn-premium disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {status === 'sending' ? 'Sending...' : status === 'success' ? 'Sent! ✓' : 'Send Message →'}

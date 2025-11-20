@@ -52,9 +52,23 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} AlkynTech LLC. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} AlkynTech LLC. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground/60">
+              Registered in Texas
+            </p>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link href="/terms-of-service" className="hover:text-foreground transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <span>Fully Managed</span>
             <span>•</span>
