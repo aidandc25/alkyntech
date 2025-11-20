@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import StructuredData, { organizationSchema } from '@/components/seo/StructuredData'
-import CookieConsent from '@/components/shared/CookieConsent'
+// import CookieConsent from '@/components/shared/CookieConsent' // Uncomment when adding Google Analytics
 import './globals.css'
 
 const inter = Inter({
@@ -65,7 +65,7 @@ export default function RootLayout({
           <SmoothScrollProvider>
             {children}
           </SmoothScrollProvider>
-          <CookieConsent />
+          {/* <CookieConsent /> */} {/* Uncomment when adding Google Analytics */}
         </ThemeProvider>
       </body>
     </html>
