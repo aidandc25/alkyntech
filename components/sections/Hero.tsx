@@ -70,8 +70,24 @@ const heroSlides: HeroSlide[] = [
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const currentSlide = heroSlides[activeSlide]
   const heroRef = useRef<HTMLDivElement>(null)
+
+  // Detect touch device
+  useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches
+      )
+    }
+
+    checkTouchDevice()
+    window.addEventListener('resize', checkTouchDevice)
+    return () => window.removeEventListener('resize', checkTouchDevice)
+  }, [])
 
   // Auto-advance slides with custom durations per slide
   useEffect(() => {
@@ -82,6 +98,21 @@ export default function Hero() {
 
     return () => clearTimeout(timer)
   }, [activeSlide, currentSlide.duration])
+
+  // Handle swipe gestures (only for touch devices)
+  const handleDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const swipeThreshold = 50
+    const swipeVelocityThreshold = 500
+
+    // Swipe right (previous slide)
+    if (info.offset.x > swipeThreshold || info.velocity.x > swipeVelocityThreshold) {
+      setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+    }
+    // Swipe left (next slide)
+    else if (info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocityThreshold) {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length)
+    }
+  }
 
   // Parallax scroll effect (Turbo-style)
   const { scrollYProgress } = useScroll({
@@ -164,9 +195,17 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Content Layer */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-end">
-          <div className="container mx-auto px-6 pb-12 md:pb-16 lg:pb-20">
+        {/* Content Layer - Swipeable on touch devices only */}
+        <motion.div
+          className={`absolute inset-0 z-20 flex flex-col justify-end ${isTouchDevice ? 'touch-pan-y' : ''}`}
+          {...(isTouchDevice && {
+            drag: 'x',
+            dragConstraints: { left: 0, right: 0 },
+            dragElastic: 0.2,
+            onDragEnd: handleDragEnd,
+          })}
+        >
+          <div className="container mx-auto px-6 pb-12 md:pb-16 lg:pb-20 pointer-events-none">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide.id}
@@ -174,7 +213,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
-                className="max-w-4xl space-y-6"
+                className="max-w-4xl space-y-6 pointer-events-auto"
               >
                 {/* Badge */}
                 <div className="inline-flex">
@@ -211,7 +250,7 @@ export default function Hero() {
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
 
         {/* Ambient Blur Orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
