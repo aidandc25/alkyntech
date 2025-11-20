@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
+import StructuredData, { organizationSchema } from '@/components/seo/StructuredData'
+import CookieConsent from '@/components/shared/CookieConsent'
 import './globals.css'
 
 const inter = Inter({
@@ -27,6 +29,14 @@ export const metadata: Metadata = {
     siteName: 'AlkynTech',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://alkyntech.com/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'AlkynTech - Premium Web Development & Automation',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -42,6 +52,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <StructuredData data={organizationSchema} />
+      </head>
       <body className="font-sans" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
@@ -52,6 +65,7 @@ export default function RootLayout({
           <SmoothScrollProvider>
             {children}
           </SmoothScrollProvider>
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>

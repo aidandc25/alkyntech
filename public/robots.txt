@@ -1,0 +1,11 @@
+# AlkynTech - robots.txt
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Disallow admin or API routes (if any)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://alkyntech.com/sitemap.xml

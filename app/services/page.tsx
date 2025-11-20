@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Script from 'next/script'
 import Header from '@/components/shared/Header'
 import Footer from '@/components/shared/Footer'
+import { webDevelopmentServiceSchema, automationServiceSchema, servicesFAQSchema } from '@/components/seo/StructuredData'
 
 const services = [
   {
@@ -72,6 +74,23 @@ export default function ServicesPage() {
 
   return (
     <>
+      {/* Structured Data for SEO */}
+      <Script
+        id="web-dev-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webDevelopmentServiceSchema) }}
+      />
+      <Script
+        id="automation-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(automationServiceSchema) }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesFAQSchema) }}
+      />
+
       <Header />
       <main className="relative min-h-screen overflow-hidden">
         {/* Hero Banner with Video Background */}
